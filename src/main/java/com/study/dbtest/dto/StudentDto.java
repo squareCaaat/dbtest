@@ -1,5 +1,6 @@
 package com.study.dbtest.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.study.dbtest.model.Student;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import java.util.Date;
 public class StudentDto {
     private String name;
     private String email;
+    @JsonFormat(pattern = "yyyy.MM.dd")
     private Date birthDate;
 
     @Builder

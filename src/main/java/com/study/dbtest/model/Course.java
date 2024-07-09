@@ -23,7 +23,7 @@ public class Course {
     @Column(nullable = false)
     private int score;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany
     @JoinColumn
     private List<Enrollment> enrollments;
 }
