@@ -1,4 +1,4 @@
-package com.study.dbtest.Repository;
+package com.study.dbtest.repository;
 
 import com.study.dbtest.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
