@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,7 +23,7 @@ public class Course {
     @Column(nullable = false)
     private int score;
 
-    @OneToMany
+    @OneToMany(mappedBy = "course")
     @JoinColumn
     private List<Enrollment> enrollments;
 }

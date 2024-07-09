@@ -1,27 +1,16 @@
 package com.study.dbtest.controller;
 
-import com.study.dbtest.model.Student;
+import com.study.dbtest.dto.StudentDto;
+import com.study.dbtest.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StudentController {
+    private StudentService studentService;
 
     @PostMapping("/students/create")
-    public String addStudent(@RequestBody Student student) {
-        return "Student added successfully";
+    public int addStudent(@RequestBody StudentDto studentDto) {
+        return studentService.save(studentDto);
     }
 
-//    @GetMapping("/students/{studentId}")
-//    public Student getStudent(@PathVariable int studentId) {
-//
-//    }
-
-    @PostMapping("/students/join")
-    public String joinStudent(@RequestBody Student student) {
-        System.out.println("id:"+student.getId());
-        System.out.println("name:"+student.getName());
-        System.out.println("email:"+student.getEmail());
-        //System.out.println("birth_date:"+student.getBirthDate());
-        return "Student joined successfully";
-    }
 }

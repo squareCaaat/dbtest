@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface StudentService {
-    public List<StudentDto> getCourseByStudentId(int studentId);
+    int save(StudentDto studentDto);
 }

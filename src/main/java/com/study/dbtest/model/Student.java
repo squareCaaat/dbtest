@@ -24,7 +24,7 @@ public class Student {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "student")
     @JoinColumn
     private List<Enrollment> enrollments;
 }
