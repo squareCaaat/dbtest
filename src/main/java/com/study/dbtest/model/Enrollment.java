@@ -1,4 +1,4 @@
-package com.study.dbtest.student.model;
+package com.study.dbtest.model;
 
 import jakarta.persistence.*;
 import lombok.*;

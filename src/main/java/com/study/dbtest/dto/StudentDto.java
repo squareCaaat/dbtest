@@ -1,6 +1,6 @@
-package com.study.dbtest.student.dto;
+package com.study.dbtest.dto;
 
-import com.study.dbtest.student.model.Student;
+import com.study.dbtest.model.Student;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,28 +1,27 @@
-package com.study.dbtest.student.model;
+package com.study.dbtest.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
 import java.util.List;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class Student {
+public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 10)
-    private String name;
+    @Column(nullable = false)
+    private String courseName;
 
     @Column(nullable = false)
-    private Date birthDate;
+    private String instructor;
 
     @Column(nullable = false)
-    private String email;
+    private int score;
 
     @OneToMany
     @JoinColumn

@@ -1,6 +1,6 @@
-package com.study.dbtest.student.controller;
+package com.study.dbtest.controller;
 
-import com.study.dbtest.student.model.Course;
+import com.study.dbtest.model.Course;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

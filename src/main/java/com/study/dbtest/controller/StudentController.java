@@ -1,8 +1,6 @@
-package com.study.dbtest.student.controller;
+package com.study.dbtest.controller;
 
-import com.study.dbtest.student.model.Student;
-import jakarta.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.study.dbtest.model.Student;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
