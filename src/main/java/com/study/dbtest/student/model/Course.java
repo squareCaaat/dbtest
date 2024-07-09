@@ -1,0 +1,29 @@
+package com.study.dbtest.student.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+public class Course {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false)
+    private String courseName;
+
+    @Column(nullable = false)
+    private String instructor;
+
+    @Column(nullable = false)
+    private int score;
+
+    @OneToMany
+    @JoinColumn
+    private List<Enrollment> enrollments;
+}
