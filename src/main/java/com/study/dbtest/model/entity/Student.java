@@ -1,4 +1,4 @@
-package com.study.dbtest.domain;
+package com.study.dbtest.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,7 +25,6 @@ public class Student {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;
 }

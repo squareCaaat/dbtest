@@ -1,23 +1,19 @@
-package com.study.dbtest.dto.request;
+package com.study.dbtest.domain.enroll.dto.request;
 
-import com.study.dbtest.domain.Course;
+import com.study.dbtest.model.entity.Course;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class CourseDto {
+@AllArgsConstructor
+@Builder
+public class CourseRequestDto {
     private String courseName;
     private String instructor;
     private int score;
-
-    @Builder
-    public CourseDto(String courseName, String instructor, int score) {
-        this.courseName = courseName;
-        this.instructor = instructor;
-        this.score = score;
-    }
 
     public Course toEntity(){
         return Course.builder()

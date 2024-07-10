@@ -1,13 +1,13 @@
-package com.study.dbtest.dto.response;
+package com.study.dbtest.domain.enroll.dto.response;
 
-import com.study.dbtest.domain.Student;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import com.study.dbtest.model.entity.Student;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Builder
 public class StudentResponseDto {

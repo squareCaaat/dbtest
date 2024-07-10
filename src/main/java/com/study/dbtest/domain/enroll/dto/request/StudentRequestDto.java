@@ -1,7 +1,7 @@
-package com.study.dbtest.dto.request;
+package com.study.dbtest.domain.enroll.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.study.dbtest.domain.Student;
+import com.study.dbtest.model.entity.Student;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentDto {
+public class StudentRequestDto {
     private String name;
     private String email;
     @JsonFormat(pattern = "yyyy-MM-dd")

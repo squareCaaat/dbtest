@@ -1,4 +1,4 @@
-package com.study.dbtest.domain;
+package com.study.dbtest.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
+@ToString
 public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,7 +24,6 @@ public class Course {
     @Column
     private int score;
 
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;
 }
