@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(nullable = false)
     private String courseName;
@@ -22,7 +22,7 @@ public class Course {
     private String instructor;
 
     @Column
-    private int score;
+    private Integer score;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;

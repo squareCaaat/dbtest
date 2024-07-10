@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 public class Student {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(nullable = false, length = 10)
     private String name;

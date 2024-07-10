@@ -1,5 +1,6 @@
 package com.study.dbtest;
 
+import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.model.entity.Student;
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.model.repository.StudentRepository;

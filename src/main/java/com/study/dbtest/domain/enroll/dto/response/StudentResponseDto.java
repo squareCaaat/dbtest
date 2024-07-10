@@ -11,7 +11,7 @@ import java.util.Date;
 @ToString
 @Builder
 public class StudentResponseDto {
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private Date birthDate;

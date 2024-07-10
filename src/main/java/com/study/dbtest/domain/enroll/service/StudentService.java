@@ -1,5 +1,7 @@
 package com.study.dbtest.domain.enroll.service;
 
+import com.study.dbtest.domain.enroll.dto.response.StudentResponseDto;
+import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.model.entity.Student;
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.model.repository.StudentRepository;
@@ -7,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -34,4 +37,5 @@ public class StudentService {
         studentRepository.deleteById(id);
         return "successfully deleted";
     }
+
 }
