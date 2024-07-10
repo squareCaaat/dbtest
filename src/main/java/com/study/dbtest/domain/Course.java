@@ -1,4 +1,4 @@
-package com.study.dbtest.model;
+package com.study.dbtest.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,7 +20,7 @@ public class Course {
     @Column(nullable = false)
     private String instructor;
 
-    @Column(nullable = false)
+    @Column
     private int score;
 
     @OneToMany

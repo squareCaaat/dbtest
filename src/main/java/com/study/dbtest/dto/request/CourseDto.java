@@ -1,6 +1,6 @@
-package com.study.dbtest.dto;
+package com.study.dbtest.dto.request;
 
-import com.study.dbtest.model.Course;
+import com.study.dbtest.domain.Course;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
