@@ -1,27 +1,20 @@
-package com.study.dbtest.dto;
+package com.study.dbtest.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.study.dbtest.model.Student;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.study.dbtest.domain.Student;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudentDto {
     private String name;
     private String email;
-    @JsonFormat(pattern = "yyyy.MM.dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
-
-    @Builder
-    public StudentDto(String name, String email, Date birthDate) {
-        this.name = name;
-        this.email = email;
-        this.birthDate = birthDate;
-    }
 
     public Student toEntity(){
         return Student.builder()

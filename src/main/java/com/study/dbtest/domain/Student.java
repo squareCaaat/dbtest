@@ -1,4 +1,4 @@
-package com.study.dbtest.model;
+package com.study.dbtest.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Entity
 public class Student {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

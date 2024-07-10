@@ -1,6 +1,6 @@
 package com.study.dbtest.repository;
 
-import com.study.dbtest.model.Student;
+import com.study.dbtest.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
