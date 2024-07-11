@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class CountStudentPerCourseResDto {
     private Integer courseId;
-    private Integer studentCount;
+    private String courseName;
+    private Long studentCount;
 
 }

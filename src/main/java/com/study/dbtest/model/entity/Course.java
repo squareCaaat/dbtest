@@ -24,6 +24,6 @@ public class Course {
     @Column
     private Integer score;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Enrollment> enrollments;
+//    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Enrollment> enrollments;
 }

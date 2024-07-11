@@ -20,18 +20,16 @@ public class CourseService{
     }
 
     @Transactional
-    public String findById(int id){
-        Optional<Course> resultCourse = courseRepository.findById(id);
-        if(resultCourse.isPresent()){
-            return  resultCourse.get().toString();
-        } else {
-            return "not found";
-        }
+    public Course findById(int id){
+        return courseRepository.findById(id).orElseThrow(()-> new RuntimeException("course not found"));
+
     }
 
     @Transactional
     public String deleteById(int id){
         courseRepository.deleteById(id);
-        return id + "is successfully deleted";
+        return id + " is successfully deleted";
     }
+
+
 }
