@@ -1,16 +1,11 @@
 package com.study.dbtest.domain.enroll.service;
 
-import com.study.dbtest.domain.enroll.dto.response.StudentResponseDto;
-import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.model.entity.Student;
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.model.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -23,19 +18,14 @@ public class StudentService {
     }
 
     @Transactional
-    public String findById(int id){
-        Optional<Student> resultStudent = studentRepository.findById(id);
-        if(resultStudent.isPresent()){
-            return  resultStudent.get().toString();
-        } else {
-            return "not found";
-        }
+    public Student findById(int id){
+        return studentRepository.findById(id).orElseThrow(() -> new RuntimeException("student not found"));
     }
 
     @Transactional
     public String deleteById(int id){
         studentRepository.deleteById(id);
-        return "successfully deleted";
+        return id + " is successfully deleted";
     }
 
 }

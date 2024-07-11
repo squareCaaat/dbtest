@@ -25,6 +25,6 @@ public class Student {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Enrollment> enrollments;
+//    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Enrollment> enrollments;
 }

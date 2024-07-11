@@ -1,8 +1,10 @@
 package com.study.dbtest.domain.enroll.controller;
 
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
-import com.study.dbtest.domain.enroll.dto.response.StudentResponseDto;
+import com.study.dbtest.domain.enroll.dto.response.StudentCoursesResDto;
+import com.study.dbtest.domain.enroll.service.EnrollmentService;
 import com.study.dbtest.domain.enroll.service.StudentService;
+import com.study.dbtest.model.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,23 +14,26 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private EnrollmentService enrollmentService;
 
-    @PostMapping("/students/create")
+    @PostMapping("/create/students")
     public int addStudent(@RequestBody StudentRequestDto studentRequestDto) {
-        int res = studentService.save(studentRequestDto);
-
-        return res;
+        return studentService.save(studentRequestDto);
     }
 
-    @GetMapping("/students/{id}")
-    public String findById(@PathVariable int id){
+    @GetMapping("/get/students/{id}")
+    public Student findById(@PathVariable int id){
         return studentService.findById(id);
     }
 
-    @DeleteMapping("/students/delete/{id}")
+    @DeleteMapping("/delete/students/{id}")
     public String deleteById(@PathVariable int id) {
         return studentService.deleteById(id);
     }
 
-
+    @GetMapping("/get/students/{id}/courses")
+    public List<StudentCoursesResDto> getCoursesFromStudent(@PathVariable int id) {
+        return enrollmentService.getCoursesFromStudent(id);
+    }
 }
