@@ -6,11 +6,12 @@ import lombok.*;
 
 import java.util.Date;
 
-@Getter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class StudentRequestDto {
+    private Integer id;
     private String name;
     private String email;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -22,5 +23,5 @@ public class StudentRequestDto {
                 .email(email)
                 .birthDate(birthDate)
                 .build();
-    } 
+    }
 }

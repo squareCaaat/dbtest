@@ -5,19 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentCoursesResDto {
-    private Integer studentId;
-    private String name;
+public class CountStudentWithSameNamePerCourseResDto {
     private Integer courseId;
     private String courseName;
-    private String instructor;
-    private Date enrollmentDate;
-
-    
+    private String name;
+    private Long studentCount;
 }
