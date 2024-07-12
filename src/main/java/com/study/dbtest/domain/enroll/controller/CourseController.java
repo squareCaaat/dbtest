@@ -3,6 +3,7 @@ package com.study.dbtest.domain.enroll.controller;
 import com.study.dbtest.domain.enroll.dto.request.CourseRequestDto;
 import com.study.dbtest.domain.enroll.dto.response.CountStudentPerCourseResDto;
 import com.study.dbtest.domain.enroll.dto.response.CountStudentWithSameNamePerCourseResDto;
+import com.study.dbtest.domain.enroll.dto.response.CourseResponseDto;
 import com.study.dbtest.domain.enroll.dto.response.StudentsWithCourseResDto;
 import com.study.dbtest.domain.enroll.service.CourseService;
 import com.study.dbtest.domain.enroll.service.EnrollmentService;
@@ -23,8 +24,8 @@ public class CourseController {
     }
 
     @GetMapping("/get/courses/{id}")
-    public Course getCourseById(@PathVariable int id) {
-        return courseService.findById(id);
+    public CourseResponseDto getCourseById(@PathVariable int id) {
+        return CourseResponseDto.of(courseService.findById(id));
     }
 
     @DeleteMapping("/delete/courses/{id}")
