@@ -2,6 +2,7 @@ package com.study.dbtest.domain.enroll.controller;
 
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.domain.enroll.dto.response.StudentCoursesResDto;
+import com.study.dbtest.domain.enroll.dto.response.StudentResponseDto;
 import com.study.dbtest.domain.enroll.service.EnrollmentService;
 import com.study.dbtest.domain.enroll.service.StudentService;
 import com.study.dbtest.model.entity.Student;
@@ -21,8 +22,8 @@ public class StudentController {
     }
 
     @GetMapping("/get/students/{id}")
-    public Student findById(@PathVariable int id){
-        return studentService.findById(id);
+    public StudentResponseDto findById(@PathVariable int id){
+        return StudentResponseDto.of(studentService.findById(id));
     }
 
     @DeleteMapping("/delete/students/{id}")
