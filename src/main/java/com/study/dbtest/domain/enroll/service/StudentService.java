@@ -1,8 +1,7 @@
 package com.study.dbtest.domain.enroll.service;
 
-import com.study.dbtest.domain.enroll.dto.response.StudentCoursesResDto;
+import com.study.dbtest.domain.enroll.dto.StudentDto;
 import com.study.dbtest.model.entity.Student;
-import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.model.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ public class StudentService {
     private final StudentRepository studentRepository;
 
     @Transactional
-    public int save(StudentRequestDto studentRequestDto) {
+    public int save(StudentDto.Request studentRequestDto) {
         return studentRepository.save(studentRequestDto.toEntity()).getId();
     }
 
@@ -32,7 +31,7 @@ public class StudentService {
     }
 
     @Transactional
-    public List<StudentCoursesResDto> getCoursesFromStudent(int id) {
+    public List<StudentDto.CourseOfStudent> getCoursesFromStudent(int id) {
         return studentRepository.findCoursesById(id);
     }
 }

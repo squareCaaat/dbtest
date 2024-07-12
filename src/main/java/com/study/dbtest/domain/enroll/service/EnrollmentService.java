@@ -1,13 +1,13 @@
 package com.study.dbtest.domain.enroll.service;
 
-import com.study.dbtest.domain.enroll.dto.request.EnrollmentRequestDto;
-import com.study.dbtest.domain.enroll.dto.response.EnrollmentResponseDto;
+import com.study.dbtest.domain.enroll.dto.EnrollmentDto;
 import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.model.entity.Enrollment;
 import com.study.dbtest.model.entity.Student;
 import com.study.dbtest.model.repository.CourseRepository;
 import com.study.dbtest.model.repository.EnrollmentRepository;
 import com.study.dbtest.model.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,8 @@ public class EnrollmentService {
     private final StudentRepository studentRepository;
     private final CourseRepository courseRepository;
 
-    public EnrollmentResponseDto enroll(EnrollmentRequestDto enrollmentRequestDto){
+    @Transactional
+    public EnrollmentDto.Response enroll(EnrollmentDto.Request enrollmentRequestDto){
         Student student = studentRepository.findById(enrollmentRequestDto.getStudentId())
                 .orElseThrow(() -> new RuntimeException("Student not found"));
         Course course = courseRepository.findById(enrollmentRequestDto.getCourseId())
@@ -34,7 +35,7 @@ public class EnrollmentService {
         student.getEnrollments().add(enrollment);
         course.getEnrollments().add(enrollment);
 
-        return EnrollmentResponseDto.of(enrollment);
+        return EnrollmentDto.Response.of(enrollment);
     }
 
 
