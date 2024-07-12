@@ -23,6 +23,6 @@ public class Course {
     @Column
     private Integer score;
 
-//    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-//    private List<Enrollment> enrollments;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Enrollment> enrollments;
 }
