@@ -1,6 +1,7 @@
 package com.study.dbtest.domain.enroll.service;
 
 import com.study.dbtest.domain.enroll.dto.request.EnrollmentRequestDto;
+import com.study.dbtest.domain.enroll.dto.response.EnrollmentResponseDto;
 import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.model.entity.Enrollment;
 import com.study.dbtest.model.entity.Student;
@@ -17,7 +18,7 @@ public class EnrollmentService {
     private final StudentRepository studentRepository;
     private final CourseRepository courseRepository;
 
-    public Enrollment enroll(EnrollmentRequestDto enrollmentRequestDto){
+    public EnrollmentResponseDto enroll(EnrollmentRequestDto enrollmentRequestDto){
         Student student = studentRepository.findById(enrollmentRequestDto.getStudentId())
                 .orElseThrow(() -> new RuntimeException("Student not found"));
         Course course = courseRepository.findById(enrollmentRequestDto.getCourseId())
@@ -29,7 +30,11 @@ public class EnrollmentService {
                 .enrollmentDate(enrollmentRequestDto.getEnrollmentDate())
                 .build();
 
-        return enrollmentRepository.save(enrollment);
+        enrollmentRepository.save(enrollment);
+        student.getEnrollments().add(enrollment);
+        course.getEnrollments().add(enrollment);
+
+        return EnrollmentResponseDto.of(enrollment);
     }
 
 
