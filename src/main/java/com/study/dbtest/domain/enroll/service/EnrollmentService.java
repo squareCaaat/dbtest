@@ -24,7 +24,6 @@ public class EnrollmentService {
                 .orElseThrow(() -> new RuntimeException("Course nor found"));
 
         Enrollment enrollment = Enrollment.builder()
-                .id(enrollmentRequestDto.getId())
                 .student(student)
                 .course(course)
                 .enrollmentDate(enrollmentRequestDto.getEnrollmentDate())
@@ -32,4 +31,6 @@ public class EnrollmentService {
 
         return enrollmentRepository.save(enrollment);
     }
+
+
 }
