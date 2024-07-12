@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EnrollmentController {
-    @Autowired
-    private EnrollmentService enrollmentService;
+    private final EnrollmentService enrollmentService;
+
+    public EnrollmentController(EnrollmentService enrollmentService) {
+        this.enrollmentService = enrollmentService;
+    }
 
     @PostMapping("/enroll")
     public EnrollmentDto.Response enroll(@RequestBody EnrollmentDto.Request enrollmentRequestDto){

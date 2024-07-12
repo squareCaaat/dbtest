@@ -9,8 +9,11 @@ import java.util.List;
 
 @RestController
 public class StudentController {
-    @Autowired
-    private StudentService studentService;
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @PostMapping("/create/students")
     public int addStudent(@RequestBody StudentDto.Request studentRequestDto) {

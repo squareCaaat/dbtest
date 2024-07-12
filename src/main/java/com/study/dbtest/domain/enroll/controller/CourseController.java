@@ -9,8 +9,11 @@ import java.util.List;
 
 @RestController
 public class CourseController {
-    @Autowired
-    private CourseService courseService;
+    private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @PostMapping("/create/courses")
     public int createCourse(@RequestBody CourseDto.Request courseDto) {
