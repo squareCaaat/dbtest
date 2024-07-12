@@ -1,11 +1,7 @@
 package com.study.dbtest.domain.enroll.controller;
 
-import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
-import com.study.dbtest.domain.enroll.dto.response.StudentCoursesResDto;
-import com.study.dbtest.domain.enroll.dto.response.StudentResponseDto;
-import com.study.dbtest.domain.enroll.service.EnrollmentService;
+import com.study.dbtest.domain.enroll.dto.StudentDto;
 import com.study.dbtest.domain.enroll.service.StudentService;
-import com.study.dbtest.model.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +9,20 @@ import java.util.List;
 
 @RestController
 public class StudentController {
-    @Autowired
-    private StudentService studentService;
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @PostMapping("/create/students")
-    public int addStudent(@RequestBody StudentRequestDto studentRequestDto) {
+    public int addStudent(@RequestBody StudentDto.Request studentRequestDto) {
         return studentService.save(studentRequestDto);
     }
 
     @GetMapping("/get/students/{id}")
-    public StudentResponseDto findById(@PathVariable int id){
-        return StudentResponseDto.of(studentService.findById(id));
+    public StudentDto.Response findById(@PathVariable int id){
+        return StudentDto.Response.of(studentService.findById(id));
     }
 
     @DeleteMapping("/delete/students/{id}")
@@ -32,7 +31,7 @@ public class StudentController {
     }
 
     @GetMapping("/get/students/{id}/courses")
-    public List<StudentCoursesResDto> getCoursesFromStudent(@PathVariable int id) {
+    public List<StudentDto.CourseOfStudent> getCoursesFromStudent(@PathVariable int id) {
         return studentService.getCoursesFromStudent(id);
     }
 }

@@ -1,9 +1,7 @@
 package com.study.dbtest.domain.enroll.controller;
 
-import com.study.dbtest.domain.enroll.dto.request.EnrollmentRequestDto;
-import com.study.dbtest.domain.enroll.dto.response.EnrollmentResponseDto;
+import com.study.dbtest.domain.enroll.dto.EnrollmentDto;
 import com.study.dbtest.domain.enroll.service.EnrollmentService;
-import com.study.dbtest.model.entity.Enrollment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,11 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EnrollmentController {
-    @Autowired
-    private EnrollmentService enrollmentService;
+    private final EnrollmentService enrollmentService;
+
+    public EnrollmentController(EnrollmentService enrollmentService) {
+        this.enrollmentService = enrollmentService;
+    }
 
     @PostMapping("/enroll")
-    public EnrollmentResponseDto enroll(@RequestBody EnrollmentRequestDto enrollmentRequestDto){
+    public EnrollmentDto.Response enroll(@RequestBody EnrollmentDto.Request enrollmentRequestDto){
         return enrollmentService.enroll(enrollmentRequestDto);
     }
 }

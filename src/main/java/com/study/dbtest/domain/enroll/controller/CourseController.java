@@ -1,13 +1,7 @@
 package com.study.dbtest.domain.enroll.controller;
 
-import com.study.dbtest.domain.enroll.dto.request.CourseRequestDto;
-import com.study.dbtest.domain.enroll.dto.response.CountStudentPerCourseResDto;
-import com.study.dbtest.domain.enroll.dto.response.CountStudentWithSameNamePerCourseResDto;
-import com.study.dbtest.domain.enroll.dto.response.CourseResponseDto;
-import com.study.dbtest.domain.enroll.dto.response.StudentsWithCourseResDto;
+import com.study.dbtest.domain.enroll.dto.CourseDto;
 import com.study.dbtest.domain.enroll.service.CourseService;
-import com.study.dbtest.domain.enroll.service.EnrollmentService;
-import com.study.dbtest.model.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +9,20 @@ import java.util.List;
 
 @RestController
 public class CourseController {
-    @Autowired
-    private CourseService courseService;
+    private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @PostMapping("/create/courses")
-    public int createCourse(@RequestBody CourseRequestDto courseRequestDto) {
-        return courseService.save(courseRequestDto);
+    public int createCourse(@RequestBody CourseDto.Request courseDto) {
+        return courseService.save(courseDto);
     }
 
     @GetMapping("/get/courses/{id}")
-    public CourseResponseDto getCourseById(@PathVariable int id) {
-        return CourseResponseDto.of(courseService.findById(id));
+    public CourseDto.Response getCourseById(@PathVariable int id) {
+        return CourseDto.Response.of(courseService.findById(id));
     }
 
     @DeleteMapping("/delete/courses/{id}")
@@ -34,17 +31,17 @@ public class CourseController {
     }
 
     @GetMapping("/get/courses/student-number")
-    public List<CountStudentPerCourseResDto> getStudentsNumber(){
+    public List<CourseDto.CountStudent> getStudentsNumber(){
         return courseService.getStudentsPerCourseNumber();
     }
 
     @GetMapping("/get/courses/same-name-student-number")
-    public List<CountStudentWithSameNamePerCourseResDto> getSameNameStudentsNumber() {
+    public List<CourseDto.StudentWithSameName> getSameNameStudentsNumber() {
         return courseService.getSameNameStudentsNumber();
     }
 
     @GetMapping("/get/courses/{id}/students")
-    public List<StudentsWithCourseResDto> getStudents(@PathVariable int id){
+    public List<CourseDto.StudentWithCourse> getStudents(@PathVariable int id){
         return courseService.getStudentsWithCourse(id);
     }
 }
