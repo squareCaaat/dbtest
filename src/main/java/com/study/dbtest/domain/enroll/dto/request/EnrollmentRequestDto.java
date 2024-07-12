@@ -7,12 +7,11 @@ import lombok.*;
 
 import java.util.Date;
 
-@Setter @Getter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class EnrollmentRequestDto {
-    private Integer id;
     private Integer studentId;
     private Integer courseId;
     @JsonFormat(pattern = "yyyy-MM-dd")

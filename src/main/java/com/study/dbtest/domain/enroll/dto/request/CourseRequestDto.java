@@ -11,14 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CourseRequestDto {
-    private Integer id;
     private String courseName;
     private String instructor;
     private int score;
 
     public Course toEntity(){
         return Course.builder()
-                .id(id)
                 .courseName(courseName)
                 .instructor(instructor)
                 .score(score)

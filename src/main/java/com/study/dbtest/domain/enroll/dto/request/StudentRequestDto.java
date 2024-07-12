@@ -6,12 +6,11 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentRequestDto {
-    private Integer id;
     private String name;
     private String email;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -19,7 +18,6 @@ public class StudentRequestDto {
 
     public Student toEntity(){
         return Student.builder()
-                .id(id)
                 .name(name)
                 .email(email)
                 .birthDate(birthDate)
